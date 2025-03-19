@@ -26,6 +26,7 @@ body {
     position: relative;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+    background: rgb(248, 248, 248);
 }
 
 .warning {
@@ -62,7 +63,7 @@ body {
     justify-content: space-around;
     border-radius: 10px;
     border: 2px solid rgb(116, 114, 114);
-    background-color: rgb(243, 237, 237)
+    background-color: rgb(220, 220, 220)
 }
 
 .accout-photo {
@@ -189,6 +190,7 @@ body {
     .container {
         width: 100%;
         max-width: 1260px;
+        padding: 0 30px 40px 0;
     }
 }
 
@@ -200,6 +202,8 @@ body {
 }
 
 .dates-select {
+    display: inline-block;
+    position: relative;
     box-sizing: content-box;
     width: 120px;
     height: 30px;
@@ -209,6 +213,14 @@ body {
     border-radius: 10px;
     font-size: 16px;
     padding: 5px 10px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';  
+    background-image: url('./img/select-icon.svg');
+    background-position: center right 5px;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
 }
 
 .dates-select--years {
@@ -239,7 +251,7 @@ body {
 .table {
     font-size: 0.8rem;
     width: 100%;
-    border: 1px solid black;
+    border: 1.5px solid black;
     border-collapse: collapse;
     margin: 0 auto;
 }
@@ -256,6 +268,12 @@ body {
     }
 }
   
+th {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+
+
 td, th {
     border: 1px solid black;
 }
@@ -280,6 +298,7 @@ td, th {
 input[type=date] {
     width: 61px;
     border: none;
+    background-color: rgb(248, 248, 248);
 }
   
 input[type=date]::-webkit-datetime-edit-text {
@@ -336,6 +355,7 @@ input[type=date]::-webkit-datetime-edit-year-field {
     padding: 0px 3px;
     font-size: 0.9rem;
     text-align: center;
+    background-color: rgba(248, 248, 248);
 }
   
 .number-input:focus {
@@ -357,6 +377,7 @@ input[type=date]::-webkit-datetime-edit-year-field {
 .select {
     border: none;
     width: 100%;
+    background-color: rgb(248, 248, 248);
 }
 
 .select:focus {
