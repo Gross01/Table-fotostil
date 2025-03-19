@@ -1,0 +1,527 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.warning {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: bisque;
+    z-index: 999;
+}
+
+.warning p {
+    font-size: 3rem;
+    color: rgb(58, 36, 36);
+}
+
+.header {
+    width: 100%;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    align-self: flex-start;
+}
+
+.account {
+    user-select: none;
+    cursor: pointer;
+    width: 200px;
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 2px solid rgb(116, 114, 114);
+    background-color: rgb(243, 237, 237)
+}
+
+.accout-photo {
+    border-radius: 50%;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.account-name {
+    font-size: 20px;
+    align-self: center;
+}
+
+.account-position {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.authentication {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 999;
+    background: rgba(0, 0, 0, 0.05); 
+    backdrop-filter: blur(8px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.authentication--disabled {
+    display: none;
+}
+
+.accounts-list {
+    position: relative;
+    display: block;
+    margin-top: 230px;
+    width: 18%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px 24px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+.accouts-photo {
+    border-radius: 50%;
+}
+
+.accounts-item {
+    cursor: pointer;
+    padding: 20px 0px;
+    display: flex;
+    user-select: none;
+}
+
+.accounts-item:not(:first-child) {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.accounts-item:hover {
+    opacity: 0.6;
+}
+
+.accounts-item:active {
+    opacity: 0.3;
+}
+
+.accounts-info {
+    margin-left: 30px;
+    align-self: center;
+}
+
+.accounts-name {
+    display: inline-block;
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.accounts-position {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.close-button {
+    cursor: pointer;
+    background-color: #000;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    background-image: url('./img/cross.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .warning {
+        display: none;
+    }
+
+    html {
+        background-color: transparent;
+    }
+}
+  
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        width: 100%;
+        max-width: 1260px;
+    }
+}
+
+.dates {
+    display: flex;
+    margin-top: 70px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.dates-select {
+    box-sizing: content-box;
+    width: 120px;
+    height: 30px;
+    display: block;
+    margin-right: 20px;
+    border: 1.5px solid black;
+    border-radius: 10px;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.dates-select--years {
+    padding: 5px 10px;
+}
+
+.statistics-button {
+    cursor: pointer;
+    box-sizing: content-box;
+    margin-left: auto;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 17px;
+    padding: 5px 10px;
+    font-weight: 500;
+}
+
+.statistics-button:hover {
+    opacity: 0.6;
+}
+
+.statistics-button:active {
+    opacity: 0.3;
+}
+  
+.table {
+    font-size: 0.8rem;
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .table {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1340px) {
+    .table {
+        width: 100%;
+    }
+}
+  
+td, th {
+    border: 1px solid black;
+}
+  
+.thead tr,
+.tbody tr {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+  
+.tbody td {
+    text-align: center;
+    padding: 10px 0px;
+}
+  
+.thead th {
+    padding: 10px 0px;
+    place-content: center;
+}
+  
+input[type=date] {
+    width: 61px;
+    border: none;
+}
+  
+input[type=date]::-webkit-datetime-edit-text {
+    -webkit-appearance: none;
+}
+
+input[type=date]::-webkit-datetime-edit-month-field{
+    -webkit-appearance: none;
+}
+  
+input[type=date]::-webkit-datetime-edit-day-field {
+    -webkit-appearance: none;
+}
+  
+input[type=date]::-webkit-datetime-edit-year-field {
+    -webkit-appearance: none;
+}
+  
+@media screen and (min-width: 425px) {
+    input[type=date] {
+        width: 83px;
+    }
+
+    .thead th {
+        padding: 10px 4px;
+    }
+}
+  
+@media screen and (min-width: 768px) {
+    input[type=date] {
+      width: auto;
+      font-size: 1.1rem;
+    }
+
+    .thead th {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .thead th {
+        padding: 15px 5px;
+        font-size: 1.2rem;
+    }
+
+    .tbody td {
+        padding: 13px 0px;
+    }
+}
+ 
+.number-input {
+    width: 100%;
+    border: none;
+    padding: 0px 3px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+  
+.number-input:focus {
+    outline: none;
+}
+
+@media screen and (min-width: 768px){
+    .number-input {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .number-input {
+        font-size: 1.2rem;
+    }
+}
+
+.select {
+    border: none;
+    width: 100%;
+}
+
+.select:focus {
+    outline: none;
+}
+
+@media screen and (min-width: 425px) {
+    .select {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .select {
+        width: 108px;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .select {
+        width: 106px;
+    }
+
+    .select--product {
+        width: 110px;
+    }
+}
+
+.tbody-stroke {
+    position: relative;
+}
+
+.tbody-stroke--first {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+.edit-button-wrapper,
+.remove-button-wrapper {
+    display: none;
+    position: absolute;
+    bottom: 22px; 
+    right: -50px;
+    width: 30px;
+    height: 30px;
+    border: none;
+}
+
+.remove-button-wrapper {
+    right: -90px;
+}
+
+.edit-button,
+.remove-button {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border-radius: 50%;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.edit-button--save {
+    background-image: url('./img/checkmark.svg');
+}
+
+.edit-button--edit {
+    background-image: url('./img/edit-svg.svg');
+}
+
+.remove-button {
+    background-size: 17px 17px;
+    background-image: url('./img/remove.svg');
+}
+
+@media screen and (min-width: 1024px) {
+    .edit-button-wrapper,
+    .remove-button-wrapper {
+        display: block;
+    }
+}
+
+.addline-wrapper {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+    width: 205px;
+    justify-content: space-between;
+}
+
+.addline-label {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.addline-span {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.addline-input {
+    width: 80px;
+    text-align: center;
+}
+
+.addline-button {
+    background: transparent;
+    position: relative;
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.addline-button:hover {
+    opacity: 0.6;
+}
+
+.addline-button:active {
+    opacity: 0.3;
+}
+
+.addline-button::after,
+.addline-button::before {
+    content: '';
+    position: absolute;
+    background-color: #000;
+    width: 34px;
+    height: 2px;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.addline-button::before {
+    transform: rotate(90deg);
+    left: 20%;
+}
+
+@media screen and (min-width: 768px) {
+
+    .addline-wrapper {
+        width: 225px;
+    }
+
+    .addline-span {
+        font-size: 16px;
+    }
+
+    .addline-input {
+        width: 95px;
+        height: 28px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .addline-wrapper {
+        padding: 24px 27px;
+        width: 230px;
+    }
+}

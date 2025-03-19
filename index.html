@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таблица мастера</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <img class="header-logo" src="img/fotostil-logo.webp" alt="Логотип 'ФотоСтиль'" width="200px" height="50px">
+    <div class="account"> 
+      <img class="accout-photo" src="img/empty-profile.jpg" alt="Фото профиля" width="50" height="50">
+      <div class="account-info">
+        <span class="account-name">Артём</span>
+        <span class="account-position">Разработчик</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="authentication">
+    <ul class="accounts-list">
+      <li class="accounts-item">
+        <img class="accouts-photo" src="img/empty-profile.jpg" alt="Фото профиля" width="50" height="50">
+        <div class="accounts-info">
+          <span class="accounts-name">Артём</span>
+          <span class="accounts-position">Разработчик</span>
+        </div>
+      </li>
+      <li class="accounts-item">
+        <img class="accouts-photo" src="img/empty-profile.jpg" alt="Фото профиля" width="50" height="50">
+        <div class="accounts-info">
+          <span class="accounts-name">Света</span>
+          <span class="accounts-position">Мастер</span>
+        </div>
+      </li>
+      <li class="accounts-item">
+        <img class="accouts-photo" src="img/empty-profile.jpg" alt="Фото профиля" width="50" height="50">
+        <div class="accounts-info">
+          <span class="accounts-name">Андрей</span>
+          <span class="accounts-position">Мастер</span>
+        </div>
+      </li>
+      <li class="accounts-item">
+        <img class="accouts-photo" src="img/empty-profile.jpg" alt="Фото профиля" width="50" height="50">
+        <div class="accounts-info">
+          <span class="accounts-name">Артур</span>
+          <span class="accounts-position">Администратор</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="warning">
+    <p>Мобильная версия в разработке, передите на пк</p>
+  </div>
+  <div class="container">
+    <div class="dates">
+      <select class="dates-select dates-select--months" name="months">
+          <option value="01">Январь</option>
+          <option value="02">Фераль</option>
+          <option value="03">Март</option>
+          <option value="04">Апрель</option>
+          <option value="05">Май</option>
+          <option value="06">Июнь</option>
+          <option value="07">Июль</option>
+          <option value="08">Август</option>
+          <option value="09">Сентябрь</option>
+          <option value="10">Октябрь</option>
+          <option value="11">Ноябрь</option>
+          <option value="12">Декабрь</option>
+      </select>
+
+      <select class="dates-select dates-select--years" name="year">
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+      </select>
+
+      <button type="button" class="statistics-button">Статистика</button>
+    </div>
+    <table class="table">
+      
+      <thead class="thead">  
+        <th>Дата</th>
+        <th>№ заказа</th>
+        <th>Продукт</th>
+        <th>Сумма</th>
+        <th>Салон</th>
+      </thead>    
+
+      <tbody class="tbody">
+        <tr class="tbody-stroke tbody-stroke--first">
+          <td>
+            <input class="date-input" type="date">
+          </td>
+          <td>
+            <input class="number-input number-input--order" type="number">
+          </td>
+          <td>
+            <select class="select select--product" name="" id="">
+                <optgroup label="Холсты">
+                    <option>Ф.Х 20х30</option>
+                    <option>Ф.Х 30х30</option>
+                    <option>Ф.Х 30х40</option>
+                    <option>Ф.Х 30х60</option>
+                    <option>Ф.Х 40х50</option>
+                    <option>Ф.Х 40х60</option>
+                    <option>Ф.Х 45х60</option>
+                    <option>Ф.Х 40х55</option>
+                    <option>Ф.Х 50х50</option>
+                    <option>Ф.Х 50х75</option>
+                    <option>Ф.Х 55х85</option>
+                    <option>Ф.Х 60х80</option>
+                    <option>Ф.Х 80х100</option>
+                    <option>Ф.Х 80х120</option>
+                </optgroup> 
+                <optgroup label="Группа 2">
+                    <option>Опция 2.1</option>
+                    <option>Опция 2.2</option>
+                </optgroup>
+                <optgroup label="Группа 3" disabled>
+                    <option>Опция 3.1</option>
+                    <option>Опция 3.2</option>
+                    <option>Опция 3.3</option>
+                </optgroup>
+            </select>
+          </td>
+          <td>
+            <input class="number-input number-input--price" type="number">
+          </td>
+          <td>
+            <select class="select select--location">
+                <option value="Online">Онлайн</option>
+                <option value="Spectr">Спектр</option>
+                <option value="Cheremushki">Черемушки</option>
+                <option value="Raikin">Райкин</option>
+                <option value="Konkovo">Коньково</option>
+            </select>
+          </td>
+
+          <td class="edit-button-wrapper">
+            <button class="edit-button edit-button--save"></button>
+          </td>
+
+          <td class="remove-button-wrapper">
+            <button class="remove-button"></button>
+          </td>
+        </tr>
+        <tr class="tbody-stroke">
+          <td>
+            <input class="date-input" type="date">
+          </td>
+          <td>
+            <input class="number-input number-input--order" type="number">
+          </td>
+          <td>
+            <select class="select select--product" name="" id="">
+                <optgroup label="Холсты">
+                    <option>Ф.Х 20х30</option>
+                    <option>Ф.Х 30х30</option>
+                    <option>Ф.Х 30х40</option>
+                    <option>Ф.Х 30х60</option>
+                    <option>Ф.Х 40х50</option>
+                    <option>Ф.Х 40х60</option>
+                    <option>Ф.Х 45х60</option>
+                    <option>Ф.Х 40х55</option>
+                    <option>Ф.Х 50х50</option>
+                    <option>Ф.Х 50х75</option>
+                    <option>Ф.Х 55х85</option>
+                    <option>Ф.Х 60х80</option>
+                    <option>Ф.Х 80х100</option>
+                    <option>Ф.Х 80х120</option>
+                </optgroup> 
+                <optgroup label="Группа 2">
+                    <option>Опция 2.1</option>
+                    <option>Опция 2.2</option>
+                </optgroup>
+                <optgroup label="Группа 3" disabled>
+                    <option>Опция 3.1</option>
+                    <option>Опция 3.2</option>
+                    <option>Опция 3.3</option>
+                </optgroup>
+            </select>
+          </td>
+          <td>
+            <input class="number-input number-input--price" type="number">
+          </td>
+          <td>
+            <select class="select select--location">
+              <option value="Online">Онлайн</option>
+              <option value="Spectr">Спектр</option>
+              <option value="Cheremushki">Черемушки</option>
+              <option value="Raikin">Райкин</option>
+              <option value="Konkovo">Коньково</option>
+            </select>
+          </td>
+
+          <td class="edit-button-wrapper">
+            <button class="edit-button edit-button--save"></button>
+          </td>
+
+          <td class="remove-button-wrapper">
+            <button class="remove-button"></button>
+          </td>
+        </tr>
+    </table>
+
+    <div class="addline-wrapper">
+        <label  class="addline-label">
+            <span class="addline-span">Кол-во строк</span>
+            <input class="addline-input" type="number" value="1">
+        </label>
+        <button type="button" class="addline-button"></button>
+    </div>
+  </div>
+  <script type="module" src="js/main.js"></script> 
+  <script type="module" src="js/tableData.js"></script>
+  <script type="module" src="js/authentication.js"></script>
+  <script type="module" src="js/functions.js"></script>
+</body>
+</html>
