@@ -21,8 +21,3 @@ for (let i = 0; i < users.length; i++) {
     let newTableData = JSON.parse(JSON.stringify(tableData))
     usersData[users[i].name] = newTableData
 }
-
-
-
-
-

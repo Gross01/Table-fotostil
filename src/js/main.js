@@ -87,11 +87,3 @@ monthSelect.addEventListener('change', function () {
 yearSelect.addEventListener('change', function () {
     fillInTable(getCurrentData())
 })
-
-
-
-
-
-
-
-
