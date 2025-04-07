@@ -3,9 +3,14 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve ./src"
   },
   "author": "Artem Vardazarov",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "type": "module",
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
 }
