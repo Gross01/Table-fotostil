@@ -1,26 +1,28 @@
-import { fillInTable, getCurrentData } from "./functions.js"
+import { autorizate } from "./functions.js"
+import { logout } from "./api/auth.js"
 
 const accountBlock = document.querySelector('.account')
 const authPopup = document.querySelector('.authentication')
-const accountName = document.querySelector('.account-name')
-const accountPosition = document.querySelector('.account-position')
+const authItem = document.querySelectorAll('.accounts-item')
 
-export let currentUser = 'Артём'
+authItem.forEach(accountItem => {
+    const logInButton = accountItem.querySelector('.accounts-login')
+    const passwordBlock = accountItem.querySelector('.accounts-password')
+    const passwordButton = passwordBlock.querySelector('button')
 
-authPopup.addEventListener('click', function(event) {
-    if (event.target.classList.contains('accounts-item')) {
-        let name = event.target.querySelector('.accounts-name').textContent
-        let position = event.target.querySelector('.accounts-position').textContent
-        currentUser = name
-        accountName.textContent = name
-        accountPosition.textContent = position
-        authPopup.style.display = 'none'
-        fillInTable(getCurrentData())
-    }
+    logInButton.addEventListener('click', function () {
+        passwordBlock.style.display = 'flex'
+    })
+    
+    passwordButton.addEventListener('click', function () {
+        autorizate(passwordBlock, accountItem, authPopup);
+    })
 })
+
 
 accountBlock.addEventListener('click', function() {
     authPopup.style.display = 'flex'
+    logout()
+        .then(res => console.log(res))
+        .catch(err => console.log(err.message))
 })
-
-

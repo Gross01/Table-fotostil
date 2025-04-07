@@ -107,44 +107,112 @@ body {
     position: relative;
     display: block;
     margin-top: 230px;
-    width: 18%;
+    width: 40%;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 20px 24px;
     border: 2px solid rgba(0, 0, 0, 0.2);
 }
 
+@media screen and (min-width: 768px) {
+    .accounts-list {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .accounts-list {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1230px) {
+    .accounts-list {
+        width: 25%;
+        max-width: 320px;
+    }
+} 
+
 .accouts-photo {
     border-radius: 50%;
 }
 
 .accounts-item {
-    cursor: pointer;
-    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.accounts-wrapper {
     display: flex;
     user-select: none;
+    padding: 20px 0px;
+}
+
+.accounts-login {
+    width: 30px;
+    height: 30px;
+    align-self: center;
+    margin-left: auto;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    background-image: url('./img/login.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 18px;
+}
+
+.accounts-password {
+    display: none;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.accounts-password input {
+    text-align: center;
+    width: 70%;
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    padding: 0 3px;
+}
+
+.accounts-password input:focus {
+    outline: none;
+}
+
+.accounts-password button {
+    user-select: none;
+    padding: 0 5px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.accounts-password button:hover {
+    opacity: 0.6;
+}
+
+.accounts-password button:active {
+    opacity: 0.3;
 }
 
 .accounts-item:not(:first-child) {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.accounts-item:hover {
-    opacity: 0.6;
-}
-
-.accounts-item:active {
-    opacity: 0.3;
-}
-
 .accounts-info {
     margin-left: 30px;
     align-self: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .accounts-name {
     display: inline-block;
     margin-right: 30px;
+    margin-bottom: 5px;
     font-size: 18px;
     font-weight: 500;
 }
@@ -196,9 +264,14 @@ body {
 
 .dates {
     display: flex;
+    justify-content: space-between;
     margin-top: 70px;
     margin-bottom: 20px;
     width: 100%;
+}
+
+.selects-wrapper {
+    display: flex;
 }
 
 .dates-select {
@@ -227,7 +300,12 @@ body {
     padding: 5px 10px;
 }
 
-.statistics-button {
+.buttons-warpper {
+    display: flex;
+    position: relative;
+}
+
+.info-button {
     cursor: pointer;
     box-sizing: content-box;
     margin-left: auto;
@@ -240,13 +318,25 @@ body {
     font-weight: 500;
 }
 
-.statistics-button:hover {
+.info-button:hover {
     opacity: 0.6;
 }
 
-.statistics-button:active {
+.info-button:active {
     opacity: 0.3;
 }
+
+.buttons-wrapper_error {
+    color: red;
+    position: absolute;
+    top: 150px;
+}    
+
+.buttons-wrapper_success {
+    color: green;
+    position: absolute;
+    top: 150px;
+}    
   
 .table {
     font-size: 0.8rem;
@@ -384,6 +474,28 @@ input[type=date]::-webkit-datetime-edit-year-field {
     outline: none;
 }
 
+.products-select-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select--product {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: none;
+    /* padding-right: 1em; */
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    width: 40%;
+}
+
+.select--product:focus {
+    outline: none;
+}
+
 @media screen and (min-width: 425px) {
     .select {
         width: 80%;
@@ -403,7 +515,7 @@ input[type=date]::-webkit-datetime-edit-year-field {
     }
 
     .select--product {
-        width: 110px;
+        width: 91px;
     }
 }
 
@@ -545,4 +657,28 @@ input[type=date]::-webkit-datetime-edit-year-field {
         padding: 24px 27px;
         width: 230px;
     }
+}
+
+.statistics-table {
+    border-collapse: collapse;
+}
+
+.statistics-table th {
+    padding: 10px 20px;
+    width: 150px;
+}
+
+.statistics-table_body td {
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.statistics-table_body td span {
+    display: block;
+    width: 100%;
+    padding: 3px 0;
+}
+
+.statistics-table_body td span:first-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }

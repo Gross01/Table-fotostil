@@ -1,89 +1,123 @@
-import { PATTERN } from "./tableData.js"
-import { addRow, editRow, removeRow, getCurrentData, fillInTable } from "./functions.js"
+import { addRow, editRow, removeRow, fillInTable, fillInStatisticsTable } from "./functions.js"
+import { sendOrdersArray } from "./api/client.js"
+import {deleteOrder} from './api/client.js'
+
 
 const addLineButton = document.querySelector('.addline-button')
 const addLineInput = document.querySelector('.addline-input')
 export const table = document.querySelector('.table')
-export const monthSelect = document.querySelector('.dates-select--months')
-export const yearSelect = document.querySelector('.dates-select--years')
+const monthSelect = document.querySelector('.dates-select--months')
+const yearSelect = document.querySelector('.dates-select--years')
+const saveButton = document.querySelector('.info-button--save')
+const infoButtonsBlock = document.querySelector('.buttons-wrapper')
+const monthOptionAll = document.querySelector('.dates-select--all')
 
 addLineButton.addEventListener('click', function() {
     let quantity = addLineInput.value
     addRow(quantity)
-
-    for (let i = 0; i < addLineInput.value; i++) {
-        PATTERN.date = getCurrentData()[0].date
-        let newPattern = {...PATTERN}
-        getCurrentData().push(newPattern)
-    }
-
-    fillInTable(getCurrentData())
 }) 
 
 table.addEventListener('click', function (event) {
-
-    let rows = Array.from(table.querySelectorAll('.tbody-stroke'))
-
     if (event.target.classList.contains('edit-button')) {
         let editButton = event.target
         let row = editButton.closest('tr')
-        editRow(editButton, row, getCurrentData())
+        editRow(editButton, row)
     }
 
     if (event.target.classList.contains('remove-button')) {
         let removeButton = event.target
         let row = removeButton.closest('tr')
-        getCurrentData().splice((rows.indexOf(row) - 1), 1)
         removeRow(row)  
-    }
-
-    if (event.target.classList.contains('date-input')) {
-        event.target.addEventListener('change', function () {
-            let dateInput = event.target
-            let row = dateInput.closest('tr')
-            getCurrentData()[rows.indexOf(row) - 1].date = dateInput.value
-        }) 
-    }
-
-    if (event.target.classList.contains('number-input--order')) {
-        event.target.addEventListener('input', function () {
-            let orderInput = event.target
-            let row = orderInput.closest('tr')
-            getCurrentData()[rows.indexOf(row) - 1].order = orderInput.value
-        }) 
-    }
-
-    if (event.target.classList.contains('select--product')) {
-        event.target.addEventListener('change', function () {
-            let productInput = event.target
-            let row = productInput.closest('tr')
-            getCurrentData()[rows.indexOf(row) - 1].product = productInput.value
-        }) 
-    }
-
-    if (event.target.classList.contains('number-input--price')) {
-        event.target.addEventListener('input', function () {
-            let priceInput = event.target
-            let row = priceInput.closest('tr')
-            getCurrentData()[rows.indexOf(row) - 1].price = priceInput.value
-        }) 
-    }
-
-    if (event.target.classList.contains('select--location')) {
-        event.target.addEventListener('change', function () {
-            let locationInput = event.target
-            let row = locationInput.closest('tr')
-            getCurrentData()[rows.indexOf(row) - 1].location = locationInput.value
-        }) 
+        if (!row.id) return 
+        deleteOrder(row.id)
+            .then(res => console.log(res))
+            .catch(err => console.log(err.message))
     }
 })
 
-fillInTable(getCurrentData())
-
 monthSelect.addEventListener('change', function () {
-    fillInTable(getCurrentData())
+    if (!Boolean(monthOptionAll.style.display === 'none')) {
+        fillInStatisticsTable()
+        return 
+    }
+
+    fillInTable()
 })
 
 yearSelect.addEventListener('change', function () {
-    fillInTable(getCurrentData())
+    if (!Boolean(monthOptionAll.style.display === 'none')) {
+        fillInStatisticsTable()
+        return 
+    }
+
+    fillInTable()
+})
+
+saveButton.addEventListener('click', function () {
+    const data = []
+
+    let order
+
+    table.querySelectorAll('.tbody-stroke').forEach((row, i, arr) => {
+        if (row.classList.contains('tbody-stroke--first')) return 
+        
+        if (row.id ) return 
+
+
+
+        const dateArr = row.querySelector('.date-input').value.split('-')
+        const year = dateArr[0]
+        const month = dateArr[1]
+        const day = dateArr[2]
+
+        const orderNumber = row.querySelector('.number-input--order').value
+        const productName = row.querySelector('.select--product-name').value
+        const productSize = row.querySelector('.select--product-size').value
+        const place = row.querySelector('.select--location').value
+        const price = row.querySelector('.number-input--price').value
+
+        let disabled = false
+        if (row.querySelector('.number-input--order').disabled) {
+            disabled = true
+        }
+
+        order = {
+            date: {
+                year: year,
+                month: month,
+                day: day
+            },
+            price: price,
+            product: {
+                name: productName,
+                size: productSize
+            },
+            place: place,
+            orderNumber: orderNumber,
+            disabled: disabled,
+        }
+
+        data.push(order)
+    })
+
+    sendOrdersArray(data)
+        .then(res => {
+            console.log(res)
+            const message = document.createElement('p')
+            message.classList.add('buttons-wrapper_success')
+            message.innerHTML = `Заказы сохранены`
+            infoButtonsBlock.appendChild(message)
+            setTimeout(() => {
+                message.remove()
+            }, 1500)
+        })
+        .catch(err => {
+            const message = document.createElement('p')
+            message.classList.add('buttons-wrapper_error')
+            message.innerHTML = `Заполните таблицу`
+            infoButtonsBlock.appendChild(message)
+            setTimeout(() => {
+                message.remove()
+            }, 3000)
+        })
 })
