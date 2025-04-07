@@ -1,4 +1,4 @@
-export async function authorization (data, url='http://localhost:5000/api/auth') {
+export async function authorization (data, url='http://109.73.205.115:5000/api/auth') {
     const response = await fetch (url, {
         method: 'POST',
         credentials: "include", 
@@ -17,7 +17,7 @@ export async function authorization (data, url='http://localhost:5000/api/auth')
     return await response.json()
 }
 
-export async function logout (url='http://localhost:5000/api/auth/logout') {
+export async function logout (url='http://109.73.205.115:5000/api/auth/logout') {
     const response = await fetch(url, {
         method: 'POST',
         credentials: "include", 

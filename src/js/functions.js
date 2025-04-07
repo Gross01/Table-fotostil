@@ -60,7 +60,7 @@ export function fillInTable () {
     const currentYear = document.querySelector('.dates-select--years').value
 
     getOrders(
-        `http://localhost:5000/api/orders/?byUserId=true&year=${currentYear}&month=${currentMonth}`
+        `http://109.73.205.115:3000/api/orders/?byUserId=true&year=${currentYear}&month=${currentMonth}`
     )
             
     .then(orders => {

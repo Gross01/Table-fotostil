@@ -1,4 +1,4 @@
-export async function getOrders (url='http://localhost:5000/api/orders') {
+export async function getOrders (url='http://109.73.205.115:5000/api/orders') {
     const response = await fetch(url, {
         method: 'GET', 
         mode: 'cors',
@@ -13,7 +13,7 @@ export async function getOrders (url='http://localhost:5000/api/orders') {
     return await response.json()
 }
 
-export async function sendOrder (data, url='http://localhost:5000/api/orders') {
+export async function sendOrder (data, url='http://109.73.205.115:5000/api/orders') {
     const response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
@@ -30,7 +30,7 @@ export async function sendOrder (data, url='http://localhost:5000/api/orders') {
 }
 
 export async function deleteOrder (id) {
-    const response = await fetch(`http://localhost:5000/api/orders/${id}`, {
+    const response = await fetch(`http://109.73.205.115:5000/api/orders/${id}`, {
         method: 'DELETE',
         mode: 'cors',
         credentials: 'include',
@@ -44,7 +44,7 @@ export async function deleteOrder (id) {
     return response
 }
 
-export async function sendOrdersArray (data, url='http://localhost:5000/api/orders/array') {
+export async function sendOrdersArray (data, url='http://109.73.205.115:5000/api/orders/array') {
     const response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
@@ -60,7 +60,7 @@ export async function sendOrdersArray (data, url='http://localhost:5000/api/orde
     return response
 }
 
-export async function getUsers (url='http://localhost:5000/api/users') {
+export async function getUsers (url='http://109.73.205.115:5000/api/users') {
     
     const response = await fetch(url, {
         method: 'GET', 
