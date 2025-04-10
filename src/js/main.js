@@ -76,11 +76,6 @@ saveButton.addEventListener('click', function () {
         const place = row.querySelector('.select--location').value
         const price = row.querySelector('.number-input--price').value
 
-        let disabled = false
-        if (row.querySelector('.number-input--order').disabled) {
-            disabled = true
-        }
-
         order = {
             date: {
                 year: year,
@@ -94,7 +89,6 @@ saveButton.addEventListener('click', function () {
             },
             place: place,
             orderNumber: orderNumber,
-            disabled: disabled,
         }
 
         data.push(order)

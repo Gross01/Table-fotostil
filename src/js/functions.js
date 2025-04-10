@@ -56,6 +56,7 @@ export function editRow(editButton, row) {
 export const removeRow = (row) => row.remove()
 
 export function fillInTable () {
+    console.log('fill')
     const currentMonth = document.querySelector('.dates-select--months').value
     const currentYear = document.querySelector('.dates-select--years').value
 
@@ -104,33 +105,17 @@ function fillInRows (orders) {
 
         const editButton = row.querySelector('.edit-button')
 
-        if (order.disabled) {
-            editButton.classList.remove('edit-button--save')
-            editButton.classList.add('edit-button--edit')
+        
+        editButton.classList.remove('edit-button--save')
+        editButton.classList.add('edit-button--edit')
 
-            row.querySelectorAll('input').forEach(input => {
-                input.disabled = true
-            })
+        row.querySelectorAll('input').forEach(input => {
+            input.disabled = true
+        })
     
-            row.querySelectorAll('select').forEach(select => {
-                select.disabled = true
-            })
-
-            return 
-        }
-
-        if (order.disabled === false) {
-            editButton.classList.add('edit-button--save')
-            editButton.classList.remove('edit-button--edit')
-
-            row.querySelectorAll('input').forEach(input => {
-                input.disabled = false
-            })
-    
-            row.querySelectorAll('select').forEach(select => {
-                select.disabled = false
-            })
-        }
+        row.querySelectorAll('select').forEach(select => {
+            select.disabled = true
+        }) 
     })
 }
 
@@ -189,7 +174,7 @@ function setCurrentDate () {
     const month = now.getMonth(); 
     const year = now.getFullYear();
     console.log(month)
-    document.querySelector('.dates-select--months').value = '0' + month
+    document.querySelector('.dates-select--months').value = '0' + (month + 1)
     document.querySelector('.dates-select--years').value = year
 }
 
